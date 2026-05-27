@@ -12,32 +12,29 @@ public class Main {
         System.out.println("---------------------------------");
         System.out.println(" Welcome to the Library Manager!");
         System.out.println("---------------------------------");
-// lala help me
+
         mainMenu();
     }
 
     public static void mainMenu() {
         while(true) {
-            System.out.println("1. List all items");
-            System.out.println("2. Add new book");
-            System.out.println("3. Add new album");
-            System.out.println("4. Add new movie");
-            System.out.println("5. Read books");
-            System.out.println("6. Exit");
+            System.out.println("1. List all books");
+            System.out.println("2. Add book");
+            System.out.println("3. Remove book");
+            System.out.println("4. Search by author");
+            System.out.println("5. Exit");
 
             String choice = scanner.nextLine();
 
             if (choice.equals("1")) {
-                listAllItems();
+                listAllBooks();
             } else if (choice.equals("2")) {
-                addNewBook();
+                addBook();
             } else if (choice.equals("3")) {
-                addNewAlbum();
+                removeBook();
             } else if (choice.equals("4")) {
-                addNewMovie();
+                searchByAuthor();
             } else if (choice.equals("5")) {
-                readBooks();
-            } else if (choice.equals("6")) {
                 break;
             } else {
                 System.out.println("Invalid choice");
@@ -45,56 +42,29 @@ public class Main {
         }
     }
 
-    public static void listAllItems() {
+    public static void listAllBooks() {
         for (LibraryItem item : library) {
             System.out.println(item);
         }
     }
 
-    public static void addNewBook() {
+    public static void addBook() {
         System.out.println("Enter title:");
         String title = scanner.nextLine();
         System.out.println("Enter author:");
         String author = scanner.nextLine();
-        System.out.println("Enter year:");
-        int year = scanner.nextInt();
-        System.out.println("Enter page count:");
-        int pageCount = scanner.nextInt();
+        System.out.println("Enter ID number:");
+        int idNumber = scanner.nextInt();
+        System.out.println("Enter description:");
+        String description = scanner.nextInt();
 
-        library.add(new Book(title, author, year, pageCount));
+        library.add(new Book(title, author, idNumber, description));
     }
 
-    public static void addNewAlbum() {
-        System.out.println("Enter title:");
-        String title = scanner.nextLine();
-        System.out.println("Enter author:");
-        String author = scanner.nextLine();
-        System.out.println("Enter year:");
-        int year = scanner.nextInt();
-        System.out.println("Enter track count:");
-        int trackCount = scanner.nextInt();
-
-        library.add(new Album(title, author, year, trackCount));
+    public static void removeBook() {
+// fill
     }
 
-    public static void addNewMovie() {
-        System.out.println("Enter title:");
-        String title = scanner.nextLine();
-        System.out.println("Enter author:");
-        String author = scanner.nextLine();
-        System.out.println("Enter year:");
-        int year = scanner.nextInt();
-        System.out.println("Enter duration in minutes:");
-        int durationInMinutes = scanner.nextInt();
-
-        library.add(new Movie(title, author, year, durationInMinutes));
+    public static void searchByAuthor() {
+// fill
     }
-
-    public static void readBooks() {
-        for (LibraryItem item : library) {
-            if (item instanceof Book) {
-                ((Book) item).readBook();
-            }
-        }
-    }
-}
