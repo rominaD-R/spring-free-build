@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("---------------------------------");
-        System.out.println(" Welcome to the Library Manager!");
+        System.out.println(" Welcome to Colin County Public Library!");
         System.out.println("---------------------------------");
 
         mainMenu();
@@ -61,8 +61,9 @@ public class Main {
             String author = scanner.nextLine();
             System.out.println("Enter ID number:");
             int idNumber = scanner.nextInt();
-            System.out.println("Enter genre");
+            System.out.println("Enter genre:");
             String genre = scanner.nextLine();
+            System.out.println("All done!");
 
             library.add(new FictionBook(title, author, idNumber, genre));
         } else if (newChoice.equals("2")) {
@@ -73,7 +74,7 @@ public class Main {
             String author = scanner.nextLine();
             System.out.println("Enter ID number:");
             int idNumber = scanner.nextInt();
-            System.out.println("Enter edition number");
+            System.out.println("Enter edition number:");
             int editionNumber = scanner.nextInt();
 
             library.add(new ReferenceBook(title, author, idNumber, editionNumber));
