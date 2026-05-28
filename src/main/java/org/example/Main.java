@@ -2,11 +2,12 @@ package org.example;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
-    private static List<LibraryItem> library = new ArrayList<>();
+    private static List<Book> library = new ArrayList<>();
 
     public static void main(String[] args) {
         System.out.println("---------------------------------");
@@ -43,30 +44,57 @@ public class Main {
     }
 
     public static void listAllBooks() {
-        for (LibraryItem item : library) {
-            System.out.println(item);
+        for (Book item : library) {
+            System.out.println(item.toString());
         }
     }
 
     public static void addBook() {
-        System.out.println("Enter title:");
-        String title = scanner.nextLine();
-        System.out.println("Enter author:");
-        String author = scanner.nextLine();
-        System.out.println("Enter ID number:");
-        int idNumber = scanner.nextInt();
-        System.out.println("Enter description:");
-        String description = scanner.nextLine();
+        System.out.println("1. Fiction book");
+        System.out.println("2. Reference book");
+        String newChoice = scanner.nextLine();
+        if (newChoice.equals("1")) {
 
-        library.add(new Book(title, author, idNumber, description));
+            System.out.println("Enter title:");
+            String title = scanner.nextLine();
+            System.out.println("Enter author:");
+            String author = scanner.nextLine();
+            System.out.println("Enter ID number:");
+            int idNumber = scanner.nextInt();
+            System.out.println("Enter genre");
+            String genre = scanner.nextLine();
+
+            library.add(new FictionBook(title, author, idNumber, genre));
+        } else if (newChoice.equals("2")) {
+
+            System.out.println("Enter title:");
+            String title = scanner.nextLine();
+            System.out.println("Enter author:");
+            String author = scanner.nextLine();
+            System.out.println("Enter ID number:");
+            int idNumber = scanner.nextInt();
+            System.out.println("Enter edition number");
+            int editionNumber = scanner.nextInt();
+
+            library.add(new ReferenceBook(title, author, idNumber, editionNumber));
+        }
     }
 
     public static void removeBook() {
         System.out.println("Enter ID number:");
         int idNumber = scanner.nextInt();
-        library.removeIf(s -> idNumber.equals(s.idNumber));
+        library.removeIf(s -> s.getID() == idNumber);
     }
 
     public static void searchByAuthor() {
-// fill
+        System.out.println("Enter author:");
+        String author = scanner.nextLine();
+        List<Book> newList = new ArrayList<>();
+        for (Book item : library) {
+            if (Objects.equals(item.getAuthor(), author)) {
+                newList.add(item);
+            }
+        }
+        System.out.println(newList);
+    }
     }
