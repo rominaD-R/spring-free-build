@@ -56,13 +56,15 @@ public class Main {
         System.out.println("Enter ID number:");
         int idNumber = scanner.nextInt();
         System.out.println("Enter description:");
-        String description = scanner.nextInt();
+        String description = scanner.nextLine();
 
         library.add(new Book(title, author, idNumber, description));
     }
 
     public static void removeBook() {
-// fill
+        System.out.println("Enter ID number:");
+        int idNumber = scanner.nextInt();
+        library.removeIf(s -> idNumber.equals(s.idNumber));
     }
 
     public static void searchByAuthor() {
