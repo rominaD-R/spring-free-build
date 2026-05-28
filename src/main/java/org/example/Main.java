@@ -77,6 +77,8 @@ public class Main {
             int editionNumber = scanner.nextInt();
 
             library.add(new ReferenceBook(title, author, idNumber, editionNumber));
+        } else {
+            System.out.println("Invalid choice");
         }
     }
 
@@ -95,6 +97,8 @@ public class Main {
                 newList.add(item);
             }
         }
-        System.out.println(newList);
+        for (Book item : newList) {
+            System.out.println(item.toString());
+        }
     }
     }
